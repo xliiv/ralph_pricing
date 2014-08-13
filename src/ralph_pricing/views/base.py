@@ -78,7 +78,8 @@ class Base(TemplateView):
     ]
 
     @ralph_permission(perms)
-    def dispatch(self, *args, **kwargs):
+    def dispatch(self, request, *args, **kwargs):
+        self.request = request
         return super(Base, self).dispatch(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
